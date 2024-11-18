@@ -1,2 +1,12 @@
 src/node_modules/
+
 src/uploads/*
+
+src/public/albums/
+
+src/public/courses/files/
+src/public/courses/images/
+src/public/courses/thumbnails/
+
+src/public/hotels/images/
+src/public/hotels/thumbnails/
