@@ -5,6 +5,7 @@ require_once './functions/Course/Course.php';
 require_once './functions/Course/Enroll.php';
 require_once './functions/lib/GenerateKey.php';
 require_once './functions/lib/ConvertThaiDate.php';
+require_once './functions/lib/Files.php';
 
 global $conn;
 
@@ -43,9 +44,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($courseDetails['courseOnline'] == 1 && $courseDetails['courseOnsite'] == 1) {
             $enrollType = isset($_POST['type-enroll']) ? $_POST['type-enroll'] : "-";
         } else if ($courseDetails['courseOnline'] == 1) {
-            $enrollType = $courseDetails['courseOnline'];
+            $enrollType = "ออนไลน์";
         } else if ($courseDetails['courseOnsite'] == 1) {
-            $enrollType = $courseDetails['courseOnsite'];
+            $enrollType = "ออนไซต์";
         } else {
             $enrollType = "-";
         }
@@ -60,9 +61,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
         $paymentProof = '-';
-        if (isset($_FILES['paymentProof']) && $_FILES['paymentProof']['error'] == UPLOAD_ERR_OK) {
-            $uploadDir = './uploads/payment-proof/';
-
+        if (isset($_FILES['paymentProof']) && $_FILES['paymentProof']['error'] === UPLOAD_ERR_OK) {
+            $uploadDir = "./uploads/payment-proof/{$courseKey}/";
+            createFolder($uploadDir);
             $fileExtension = pathinfo($_FILES['paymentProof']['name'], PATHINFO_EXTENSION);
 
             $fileName = uniqid() . '.' . $fileExtension;

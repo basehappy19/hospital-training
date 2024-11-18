@@ -31,7 +31,7 @@ if ($attendDetail['statusPayment'] == 1) {
 } else {
     $statusPaymentText = "ยังไม่ยืนยันการชำระเงิน";
     $statusPaymentBg = "bg-red-300";
-    $showButtonConfirm = false;
+    $showButtonConfirm = true;
 };
 
 if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['clearSessionUpdateAttend'])) {
@@ -166,13 +166,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && !isset($_POST['clearSessionUpdateAtt
                 <?php if ($courseDetail['courseEnrollFee'] != 0) : ?>
                     <div class="w-full">
                         <div class="flex flex-col md:flex-row md:gap-x-10 items-center justify-center">
-                            <img class="object-fit max-h-[300px]" src="/uploads/payment-proof/<?php echo $attendDetail['paymentProof'] ?>" alt="" srcset="">
+                            <img class="object-fit max-h-[300px]" src="/uploads/payment-proof/<?php echo $courseDetail['courseKey'] ?>/<?php echo $attendDetail['paymentProof'] ?>" alt="" srcset="">
                             <div class="sm:mb-10 text-center">
                                 <div class="font-medium sm:mb-3">หลักฐานการโอนเงิน</div>
                                 <div class="px-0.5 md:p-2 my-5 <?php echo $statusPaymentBg; ?>">
                                     <?php echo $statusPaymentText; ?>
                                 </div>
-                                <?php if ($showButtonConfirm == false) : ?>
+                                <?php if ($showButtonConfirm == true) : ?>
                                     <a href="/?page=course_attend_verify&courseId=<?php echo $courseId ?>&courseKey=<?php echo $courseKey ?>&enrollCode=<?php echo $attendDetail['enrollCode'] ?>" class="transition-all text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">ยืนยันการการชำระเงิน</a>
                                 <?php endif; ?>
                             </div>

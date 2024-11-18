@@ -87,7 +87,7 @@ switch ($page) {
                     confirmButtonText: \"โอเค\"
                 });
                 </script>";
-                header("Location: /course/detail/" . $courseId);
+                header("Location: /?page=course_detail&courseId=" . $courseId);
                 exit();
             } else {
                 $_SESSION["alert"] = "<script>
@@ -99,7 +99,7 @@ switch ($page) {
                     confirmButtonText: \"ลองใหม่\"
                 });
                 </script>";
-                header("Location: /courses");
+                header("Location: /?page=courses");
                 exit();
             }
         }
@@ -159,7 +159,6 @@ switch ($page) {
             header("Location: /index.php?page=manage_users");
             exit();
         }
-        break;
 
     case 'course_remove':
         $key = isset($_GET['key']) ? $_GET['key'] : null;
@@ -186,7 +185,6 @@ switch ($page) {
             header("Location: /index.php?page=courses");
             exit();
         }
-        break;
 
     case 'hotel_remove':
         $key = isset($_GET['key']) ? $_GET['key'] : null;
@@ -213,7 +211,6 @@ switch ($page) {
             header("Location: /index.php?page=hotels");
             exit();
         }
-        break;
 
     case 'fetchAlbum':
         load_view('fetchAlbum');
@@ -278,7 +275,6 @@ switch ($page) {
             header("Location: /index.php?page=albums");
             exit();
         }
-        break;
 
     case 'album_image_remove':
         $albumKey = isset($_GET['albumKey']) ? $_GET['albumKey'] : null;
@@ -328,8 +324,6 @@ switch ($page) {
             header("Location: /index.php?page=album_share&key={$albumKey}");
             exit();
         }
-        break;
-
     case 'album_edit':
         $key = isset($_GET['key']) ? $_GET['key'] : null;
         load_view('album_edit', ['key' => $key]);

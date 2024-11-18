@@ -209,7 +209,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['fileTitle'])) {
                                     </a>
                                 </div>
                                 <div class="cursor-pointer font-semibold text-red-400 hover:text-red-500 transition-all p-2 rounded-lg">
-                                    <a onclick="removeCourse('/course/remove/<?php echo $courseDetails['courseKey'] ?>')">
+                                    <a onclick="removeCourse('/?page=course_remove&key=<?php echo $courseDetails['courseKey'] ?>')">
                                         ลบ
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="inline-flex icon icon-tabler icons-tabler-filled icon-tabler-trash-x">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -250,7 +250,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['fileTitle'])) {
                                 </div>
                             <?php endif; ?>
                             <?php if (isset($_SESSION['enrollInfo'])) : ?>
-                                <div class="relative bg-red-400 text-white font-medium rounded-lg py-2 my-3">
+                                <div class="relative bg-green-400 text-white font-medium rounded-lg py-2 my-3">
                                     <div class="absolute left-4 top-4">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="inline-flex icon icon-tabler icons-tabler-filled icon-tabler-bell">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />

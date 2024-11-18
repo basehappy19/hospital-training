@@ -3,7 +3,7 @@
 function login($conn, $username) {
     $sql = 'SELECT id, username, password FROM users WHERE username = :username';
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':username', $username, PDO::PARAM_INT);
+    $stmt->bindParam(':username', $username, PDO::PARAM_STR);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
